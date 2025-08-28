@@ -190,7 +190,7 @@
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer();});
 
     function openPlayer(v){
-      player.src=`https://player.vimeo.com/video/${v.id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1&controls=0`;
+      player.src=`https://player.vimeo.com/video/${v.id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1&controls=1`;
       nowTitle.textContent=v.title;
       if(v.pdf){pdfBtn.href=v.pdf; pdfBtn.style.display='flex';} else {pdfBtn.style.display='none';}
       modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
