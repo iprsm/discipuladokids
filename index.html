@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Treinamentos IPRSM Kids</title>
-  <meta name="description" content="Página estilo Netflix/YouTube para exibir vídeos privados do Vimeo com acesso restrito." />
+  <meta name="description" content="Página estilo Netflix/YouTube para exibir vídeos privados do Google Drive com acesso restrito." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -31,7 +31,6 @@
     .headline{font-size:clamp(20px,5vw,32px);font-weight:800;margin:0}
     .sub{color:var(--muted);margin:6px 0 0;font-size:clamp(14px,3.5vw,18px)}
     
-    /* Grid responsivo */
     .grid{display:grid;grid-template-columns:1fr;gap:16px;padding:20px}
     @media(min-width:600px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(min-width:720px){.grid{grid-template-columns:repeat(3,1fr)}}
@@ -46,17 +45,12 @@
     .modal.open{display:grid}
     .modal-dialog{width:96vw;max-width:980px;background:var(--panel);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);position:relative}
     .modal-head{padding:10px 14px;border-bottom:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between}
-
-    /* Gate (acesso restrito) */
     .gate { position: fixed; inset:0; display:grid; place-items:center; background: radial-gradient(1000px 600px at 20% -10%, rgba(139,92,246,.2), transparent 60%), var(--bg); z-index: 200 }
     .gate-card { width:min(94vw, 420px); background: var(--panel); border-radius: 20px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.08); padding: 16px }
     .gate h1 { margin:0 0 8px; font-size: 18px }
     .gate p { margin:0 0 14px; color: var(--muted); font-size:14px }
-
-    /* Footer */
     footer { color: var(--muted); text-align:center; padding: 24px 16px; font-size: 12px }
     .pill { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px dashed rgba(255,255,255,.18); }
-
     .player{width:100%;aspect-ratio:16/9;border:0;display:block;background:#000}
     .pdf-fab {
       position: absolute;
@@ -79,7 +73,7 @@
     .pdf-fab:hover {transform: scale(1.1);opacity: 0.9;}
   </style>
 </head>
-<body>  <!-- GATE DE ACESSO -->
+<body>
   <div id="gate" class="gate">
     <div class="gate-card">
       <div class="logo" style="margin-bottom:10px">
@@ -87,7 +81,7 @@
         <div>Treinamentos IPRSM Kids</div>
       </div>
       <h1>Digite o código de acesso</h1>
-      <p>Este portal exibe vídeos privados do Minsiterio Infantil da Igreja Presbiteriana Renovada de São Miguel.</p>
+      <p>Este portal exibe vídeos privados do Ministério Infantil da Igreja Presbiteriana Renovada de São Miguel.</p>
       <div style="display:flex; gap:10px; align-items:center">
         <input id="accessCode" class="input" type="password" placeholder="Código fornecido pelo administrador" />
         <button id="enterBtn" class="btn">Entrar</button>
@@ -129,25 +123,29 @@
   </div>
 
   <footer>
-    <div class="pill">ℹ️ Recomendado: Cada vídeo possui uma apostila disponível no botão do canto superior direito.</div>
+    <div class="pill">ℹ️ Dica Renovada: Cada vídeo possui uma apostila disponível no botão do canto superior direito.</div>
   </footer>
 
   <script>
-    /**********************
-     * CONFIGURAÇÕES
-     **********************/
-    const ACCESS_CODES = ["123456"];
+    const ACCESS_CODES = ["iprsmkids"];
     const VIDEOS = [
-      { id: "833660756", title: "Introdução ao Projeto", category: "Treinamentos", tags: ["onboarding","aula 1"], thumb: "https://i.imgur.com/YGut6uX.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
-      { id: "833660756", title: "Atividades", category: "Rotinas", tags: ["onboarding","aula 1"], thumb: "https://i.imgur.com/jYxd6dP.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
-      { id: "240522592", title: "Módulo 1", category: "Treinamentos", tags: ["processos","operacional"], thumb: "https://i.imgur.com/fQ07Fkq.png", pdf: "treinamento_iprsmkids/apostilas/modulo2.pdf" }
+      { id: "1BFdv9B956q6JWcYDNqtnOUNXMv8H9x_-", title: "Introdução", category: "Módulo 1", tags: ["Dayane","Modulo 1","Introdução"], thumb: "https://i.imgur.com/IgnG636.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
+
+      { id: "1X85MWlKH72T_SIrwt6NqFaq7ir_uphJT", title: "Qual é o Propósito do IPR Kids?", category: "Módulo 1", tags: ["Dayane","Modulo 1","Qual é o Propósito do IPR Kids?"], thumb: "https://i.imgur.com/8G3toEH.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
+
+      { id: "1468jzahclFwmWMp7uiz-5brvmgF5GxnT", title: "Características Necessárias para o Voluntario!", category: "Módulo 1", tags: ["Dayane","modulo 1","Características Necessárias para o Voluntario"], thumb: "https://i.imgur.com/f6jT6aQ.png", pdf: "treinamento_iprsmkids/apostilas/modulo2.pdf" },
+
+   { id: "1MuLioiHj5xEi3BX9vrT3o3m9ncMrbn9N", title: "Quais as Necessidades das Nossas Crianças?", category: "Módulo 2", tags: ["Vitoria","Modulo 2","Quais as Necessidades das Nossas Crianças"], thumb: "https://i.imgur.com/KHD3tYz.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
+
+      { id: "1FaCjrcRwp-Jvi9-rhMBTGTret44bbqW0", title: "Crianças Atípicas", category: "Módulo 2", tags: ["Vitoria","Modulo 2","Crianças Atípicas"], thumb: "https://i.imgur.com/JQkcN4q.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
+
+ { id: "1LVw0lq5YhSpeu2Ava88DQnuTICaCz1jj", title: "Como funciona o Culto Kids?", category: "Módulo 3", tags: ["Juliana","Modulo 3","Como funciona o Culto Kids?"], thumb: "https://i.imgur.com/XbFTdK4.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
+
+      { id: "1FfdDeLttqP-mLz1si_fzKkhU3Exwy7_n", title: "Como funciona uma Aula?", category: "Módulo 3", tags: ["Juliana","Modulo 3","Como funciona uma Aula?"], thumb: "https://i.imgur.com/DKin6IS.png", pdf: "treinamento_iprsmkids/apostilas/introducao.pdf" },
     ];
 
-    const CATEGORY_COLORS = { "Treinamentos":"rgba(56,189,248,.18)", "Séries":"rgba(244,114,182,.18)", "Eventos":"rgba(163,230,53,.18)" };
+    const CATEGORY_COLORS = { "Módulo 1":"rgba(56,189,248,.18)", "Módulo 2":"rgba(244,114,182,.18)", "Módulo 3":"rgba(163,230,53,.18)" };
 
-    /**********************
-     * GATE
-     **********************/
     const gate = document.getElementById('gate'), gateMsg = document.getElementById('gateMsg');
     document.getElementById('enterBtn').addEventListener('click',()=>{
       const code=document.getElementById('accessCode').value.trim();
@@ -156,9 +154,6 @@
     });
     if(localStorage.getItem('portal_access')==='ok')gate.style.display='none';
 
-    /**********************
-     * CATÁLOGO
-     **********************/
     const grid=document.getElementById('grid'), q=document.getElementById('q'), catSelect=document.getElementById('category'), clearBtn=document.getElementById('clearBtn');
     const cats=[...new Set(VIDEOS.map(v=>v.category))].sort();
     cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;catSelect.appendChild(o);});
@@ -181,16 +176,13 @@
     clearBtn.addEventListener('click',()=>{q.value='';catSelect.value='';render();});
     render();
 
-    /**********************
-     * PLAYER MODAL + PDF FAB
-     **********************/
     const modal=document.getElementById('modal'), player=document.getElementById('player'), nowTitle=document.getElementById('nowTitle'), pdfBtn=document.getElementById('pdfBtn');
     document.getElementById('closeModal').addEventListener('click',closePlayer);
     modal.addEventListener('click',e=>{if(e.target===modal)closePlayer();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closePlayer();});
 
     function openPlayer(v){
-      player.src=`https://player.vimeo.com/video/${v.id}?autoplay=1&title=0&byline=0&portrait=0&dnt=1&controls=1`;
+      player.src=`https://drive.google.com/file/d/${v.id}/preview`;
       nowTitle.textContent=v.title;
       if(v.pdf){pdfBtn.href=v.pdf; pdfBtn.style.display='flex';} else {pdfBtn.style.display='none';}
       modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
