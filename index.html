@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --bg: #0b0b12; --panel: #12121b; --soft: #1b1b2b; --text: #e7e7ef; --muted: #9aa0aa;
@@ -19,7 +18,7 @@
     * { box-sizing: border-box; }
     html, body { margin:0; height:100%; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
-    /* Fundo responsivo */
+    /* Fundo responsivo usando div e img */
     .background {
       position: fixed;
       top: 0; left: 0;
@@ -51,47 +50,24 @@
       background: rgba(18, 18, 27, 0.85);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .nav { display: flex; align-items: center; gap: 18px; padding: 14px 20px; flex-wrap: wrap; justify-content: space-between; }
+    .nav { display: flex; align-items: center; gap: 18px; padding: 14px 20px; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
     .logo-badge { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow); }
 
-    /* 🔍 Barra de pesquisa */
-    .search {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      transition: all 0.3s ease;
-    }
+    .search { flex: 1; display: flex; gap: 10px; flex-wrap: wrap; }
     .input, select {
-      flex: 1;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(0,0,0,.12);
-      color: #222;
-      padding: 12px 14px;
-      border-radius: 12px;
-      outline: none;
+      flex: 1; background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(0,0,0,.12); color: #222;
+      padding: 12px 14px; border-radius: 12px; outline: none;
     }
     .input::placeholder { color: #555; }
     .btn { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border: 0; padding: 12px 16px; border-radius: 12px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); }
     .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.5); color: #fff; padding: 10px 14px; border-radius: 12px; cursor: pointer; }
 
-    /* 🔹 Ícone de busca (mobile) */
-    .search-toggle {
-      display: none;
-      font-size: 22px;
-      color: white;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* Hero */
     .hero { padding: 28px 20px 8px; }
     .headline { font-size: clamp(20px, 5vw, 32px); font-weight: 800; margin: 0; color: #fff; display:flex; align-items:center; gap:8px; }
-    .sub { color: #274360; font-size: 1.2em; text-shadow: 1px 1px 2px #aaa; }
+    .sub { color: #eee; margin: 6px 0 0; font-size: clamp(14px, 3.5vw, 18px); }
 
-    /* Grid responsivo */
     .grid { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 20px; }
     @media(min-width:600px) { .grid { grid-template-columns: repeat(2,1fr); } }
     @media(min-width:720px) { .grid { grid-template-columns: repeat(3,1fr); } }
@@ -109,7 +85,6 @@
     .title { font-weight: 700; font-size: 14px; line-height: 1.3; margin: 0 0 4px; }
     .badge { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; background: rgba(139,92,246,.16); border: 1px solid rgba(139,92,246,.45); color: #333; }
 
-    /* Modal */
     .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.55); backdrop-filter: blur(2px); z-index: 100; }
     .modal.open { display: grid; }
     .modal-dialog {
@@ -122,7 +97,6 @@
     }
     .modal-head { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; justify-content: space-between; }
 
-    /* Gate (acesso) */
     .gate { position: fixed; inset:0; display: grid; place-items: center; background: rgba(0,0,0,0.6); z-index: 200; }
     .gate-card {
       width: min(94vw, 420px);
@@ -139,7 +113,6 @@
     footer { color:#fff; text-align:center; padding: 24px 16px; font-size: 12px; }
     .pill { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px dashed rgba(255,255,255,.7); background:rgba(0,0,0,0.4); }
     .player { width: 100%; aspect-ratio:16/9; border:0; display:block; background:#000; }
-
     .pdf-fab {
       position: absolute;
       top: 12px; right: 12px;
@@ -150,61 +123,15 @@
       transition: transform 0.2s ease, opacity 0.2s ease; z-index: 10;
     }
     .pdf-fab:hover { transform: scale(1.1); opacity: 0.9; }
-
-    /* 🔹 Responsividade aprimorada */
-    @media (max-width: 720px) {
-      .search {
-        display: none;
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-      }
-
-      .search.active {
-        display: flex;
-        animation: fadeIn 0.3s ease;
-      }
-
-      .input, select, .btn-ghost {
-        width: 100%;
-        font-size: 14px;
-        padding: 10px 12px;
-        border-radius: 10px;
-      }
-
-      .search-toggle {
-        display: block;
-      }
-
-      header .logo img {
-        height: 60px !important;
-      }
-
-      header .logo {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      .nav {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; transform: scale(0.95); }
-        to { opacity: 1; transform: scale(1); }
-      }
-    }
   </style>
 </head>
-
 <body>
+  <!-- Fundo responsivo -->
   <div class="background">
     <img src="fundo.png" alt="Fundo" />
   </div>
 
   <div class="content">
-    <!-- Tela de acesso -->
     <div id="gate" class="gate">
       <div class="gate-card">
         <div class="logo" style="margin-bottom:10px">
@@ -225,17 +152,13 @@
       </div>
     </div>
 
-    <!-- Cabeçalho -->
     <header>
       <nav class="nav container">
-        <div class="logo">
-          <img src="discipulado.png" alt="Logo IPRSM Kids" style="height:120px; width:auto;">
-          <img src="ipr_kids_icon.ico" alt="Logo IPRSM Kids" style="height:80px; width:auto;">
+        <div class="logo" style="display:flex; align-items:center; gap:8px;">
+          <img src="ipr_kids_icon.ico" alt="Logo IPRSM Kids" style="height:100px; width:auto;">
         </div>
-
-        <button class="search-toggle" id="searchToggle">🔍</button>
-
-        <div class="search" id="searchBox">
+        <br><br>
+        <div class="search">
           <input id="q" class="input" placeholder="Pesquisar vídeos... (título, categoria, tags)" />
           <select id="category"><option value="">Todos os módulos</option></select>
           <button id="clearBtn" class="btn-ghost">Limpar</button>
@@ -244,8 +167,18 @@
     </header>
 
     <section class="hero container">
-      <p class="sub">Capacitando líderes para servir no ministério infantil, guiando crianças no caminho de Jesus.</p>
-    </section>
+  
+  <p class="sub">Capacitando líderes para servir no ministério infantil, guiando crianças no caminho de Jesus.</p>
+</section>
+
+<style>
+    .sub {
+    color: #274360; /* Fonte mais escura */
+    font-size: 1.2em;
+    text-shadow: 1px 1px 2px #aaa; /* leve 3D */
+  }
+</style>
+
 
     <main class="container"><div id="grid" class="grid" role="list"></div></main>
 
@@ -281,7 +214,6 @@
 
     const CATEGORY_COLORS = { "Módulo 1":"rgba(56,189,248,.18)", "Módulo 2":"rgba(244,114,182,.18)", "Módulo 3":"rgba(163,230,53,.18)" };
 
-    // Controle de acesso
     const gate = document.getElementById('gate'), gateMsg = document.getElementById('gateMsg');
     document.getElementById('enterBtn').addEventListener('click',()=>{
       const code=document.getElementById('accessCode').value.trim();
@@ -290,37 +222,31 @@
     });
     if(localStorage.getItem('portal_access')==='ok')gate.style.display='none';
 
-    // Renderização de vídeos
     const grid=document.getElementById('grid'), q=document.getElementById('q'), catSelect=document.getElementById('category'), clearBtn=document.getElementById('clearBtn');
     const cats=[...new Set(VIDEOS.map(v=>v.category))].sort();
     cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;catSelect.appendChild(o);});
-    function render(list){
-      grid.innerHTML='';
-      list.forEach(v=>{
-        const c=document.createElement('div');c.className='card';
-        c.innerHTML=`<img src="${v.thumb}" alt="${v.title}" class="thumb"/>
-          <div class="meta"><div class="title">${v.title}</div>
-          <div class="badge" style="background:${CATEGORY_COLORS[v.category]||'rgba(255,255,255,0.15)'}">${v.category}</div></div>`;
-        c.onclick=()=>openModal(v);grid.appendChild(c);
-      });
+    function makeCard(v){
+      const card=document.createElement('article');card.className='card';card.role='listitem';
+      const img=document.createElement('img');img.className='thumb';img.src=v.thumb;img.alt=v.title;
+      const meta=document.createElement('div');meta.className='meta';
+      const title=document.createElement('h3');title.className='title';title.textContent=v.title;
+      const badge=document.createElement('span');badge.className='badge';badge.textContent=v.category;
+      const bg=CATEGORY_COLORS[v.category];if(bg){badge.style.background=bg;badge.style.borderColor='transparent';}
+      meta.append(title,badge);card.append(img,meta);card.addEventListener('click',()=>openPlayer(v));
+      return card;
     }
-    function filter(){
+    function render(){
       const term=q.value.toLowerCase(),cat=catSelect.value;
-      const res=VIDEOS.filter(v=>(!cat||v.category===cat)&&
-      (v.title.toLowerCase().includes(term)||v.tags.some(t=>t.toLowerCase().includes(term))));
-      render(res);
+      const filtered=VIDEOS.filter(v=>{const hay=(v.title+' '+(v.tags||[]).join(' ')).toLowerCase();return(!term||hay.includes(term))&&(!cat||v.category===cat);});
+      grid.replaceChildren(...filtered.map(makeCard));
     }
-    q.addEventListener('input',filter);catSelect.addEventListener('change',filter);clearBtn.addEventListener('click',()=>{q.value='';catSelect.value='';render(VIDEOS);});
-    render(VIDEOS);
+    q.addEventListener('input',render);catSelect.addEventListener('change',render);
+    clearBtn.addEventListener('click',()=>{q.value='';catSelect.value='';render();});
+    render();
 
-    // Modal player
-    const modal=document.getElementById('modal'),player=document.getElementById('player'),nowTitle=document.getElementById('nowTitle'),closeModal=document.getElementById('closeModal'),pdfBtn=document.getElementById('pdfBtn');
-    function openModal(v){modal.classList.add('open');player.src=`https://drive.google.com/file/d/${v.id}/preview`;nowTitle.textContent=v.title;if(v.pdf){pdfBtn.href=v.pdf;pdfBtn.style.display='flex';}else pdfBtn.style.display='none';}
-    closeModal.onclick=()=>{modal.classList.remove('open');player.src='';};
-
-    // 🔍 Controle do ícone de busca (mobile)
-    const searchToggle=document.getElementById('searchToggle'), searchBox=document.getElementById('searchBox');
-    searchToggle.addEventListener('click',()=>{searchBox.classList.toggle('active');});
+    const modal=document.getElementById('modal'), player=document.getElementById('player'), nowTitle=document.getElementById('nowTitle'), pdfBtn=document.getElementById('pdfBtn');
+    function openPlayer(v){modal.classList.add('open');nowTitle.textContent=v.title;player.src="https://drive.google.com/file/d/"+v.id+"/preview";if(v.pdf){pdfBtn.href=v.pdf;pdfBtn.style.display='flex';}else pdfBtn.style.display='none';}
+    document.getElementById('closeModal').addEventListener('click',()=>{modal.classList.remove('open');player.src='';});
   </script>
 </body>
 </html>
