@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Discipulado IPRSM Kids</title>
-  <meta name="description" content="Página estilo Netflix/YouTube para exibir vídeos privados do Google Drive com acesso restrito." />
+  <meta name="description" content="Portal de treinamentos do Ministério Infantil da Igreja Presbiteriana Renovada de São Miguel Paulista." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -18,55 +18,41 @@
     * { box-sizing: border-box; }
     html, body { margin:0; height:100%; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
 
-    /* Fundo responsivo usando div e img */
     .background {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
+      position: fixed; top: 0; left: 0;
+      width: 100vw; height: 100vh; overflow: hidden;
       z-index: -1;
     }
     .background img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
     }
 
-    .content {
-      position: relative;
-      z-index: 1;
-      color: var(--text);
-    }
+    .content { position: relative; z-index: 1; color: var(--text); }
 
     a { color: inherit; text-decoration: none; }
     .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-    /* Cabeçalho translúcido */
     header {
       position: sticky; top: 0; z-index: 50;
       backdrop-filter: blur(10px);
       background: rgba(18, 18, 27, 0.85);
       border-bottom: 1px solid rgba(255,255,255,.06);
     }
-    .nav { display: flex; align-items: center; gap: 18px; padding: 14px 20px; }
+    .nav { display: flex; align-items: center; gap: 18px; padding: 14px 20px; flex-wrap: wrap; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .3px; }
-    .logo-badge { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow: var(--shadow); }
-
     .search { flex: 1; display: flex; gap: 10px; flex-wrap: wrap; }
     .input, select {
       flex: 1; background: rgba(255,255,255,0.9);
       border: 1px solid rgba(0,0,0,.12); color: #222;
       padding: 12px 14px; border-radius: 12px; outline: none;
     }
-    .input::placeholder { color: #555; }
     .btn { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: white; border: 0; padding: 12px 16px; border-radius: 12px; font-weight: 700; cursor: pointer; box-shadow: var(--shadow); }
     .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,.5); color: #fff; padding: 10px 14px; border-radius: 12px; cursor: pointer; }
 
-    .hero { padding: 28px 20px 8px; }
-    .headline { font-size: clamp(20px, 5vw, 32px); font-weight: 800; margin: 0; color: #fff; display:flex; align-items:center; gap:8px; }
-    .sub { color: #eee; margin: 6px 0 0; font-size: clamp(14px, 3.5vw, 18px); }
+    .hero { padding: 28px 20px 8px; text-align: center; }
+    .headline { font-size: clamp(20px, 5vw, 32px); font-weight: 800; margin: 0; color: #fff; }
+    .sub { color: #274360; font-size: 1.2em; text-shadow: 1px 1px 2px #aaa; }
 
     .grid { display: grid; grid-template-columns: 1fr; gap: 16px; padding: 20px; }
     @media(min-width:600px) { .grid { grid-template-columns: repeat(2,1fr); } }
@@ -82,8 +68,8 @@
     }
     .thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; background: #0f0f16; display: block; }
     .card .meta { padding: 10px 12px 12px; }
-    .title { font-weight: 700; font-size: 14px; line-height: 1.3; margin: 0 0 4px; }
-    .badge { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; background: rgba(139,92,246,.16); border: 1px solid rgba(139,92,246,.45); color: #333; }
+    .title { font-weight: 700; font-size: 14px; margin: 0 0 4px; }
+    .badge { display: inline-block; font-size: 12px; padding: 4px 8px; border-radius: 999px; }
 
     .modal { position: fixed; inset: 0; display: none; place-items: center; background: rgba(0,0,0,.55); backdrop-filter: blur(2px); z-index: 100; }
     .modal.open { display: grid; }
@@ -92,8 +78,7 @@
       background: rgba(18,18,27,0.95);
       border-radius: 12px; overflow: hidden;
       border: 1px solid rgba(255,255,255,.08);
-      box-shadow: var(--shadow); position: relative;
-      color: #fff;
+      box-shadow: var(--shadow); color: #fff;
     }
     .modal-head { padding: 10px 14px; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; justify-content: space-between; }
 
@@ -109,8 +94,6 @@
     }
     .gate h1 { margin:0 0 8px; font-size: 18px; }
     .gate p { margin:0 0 14px; color: #333; font-size:14px; }
-
-    footer { color:#fff; text-align:center; padding: 24px 16px; font-size: 12px; }
     .pill { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; border:1px dashed rgba(255,255,255,.7); background:rgba(0,0,0,0.4); }
     .player { width: 100%; aspect-ratio:16/9; border:0; display:block; background:#000; }
     .pdf-fab {
@@ -123,67 +106,64 @@
       transition: transform 0.2s ease, opacity 0.2s ease; z-index: 10;
     }
     .pdf-fab:hover { transform: scale(1.1); opacity: 0.9; }
+
+    footer { color:#fff; text-align:center; padding: 24px 16px; font-size: 12px; }
   </style>
 </head>
 <body>
-  <!-- Fundo responsivo -->
   <div class="background">
     <img src="fundo.png" alt="Fundo" />
   </div>
 
   <div class="content">
+    <!-- Login -->
     <div id="gate" class="gate">
       <div class="gate-card">
-        <div class="logo" style="margin-bottom:10px">
-          <div class=></div>
-          <div style="display:flex; align-items:center; gap:8px;">
-            <img src="ipr_kids_icon.ico" alt="Logo IPRSM Kids" style="height:100px; width:auto;">
-            <img src="discipulado.png" alt="Logo IPRSM Kids" style="height:120px; width:auto;">
-          </div>
+        <div style="display:flex; align-items:center; gap:8px; justify-content:center; margin-bottom:10px;">
+          <img src="ipr_kids_icon.ico" alt="Logo IPRSM Kids" style="height:100px; width:auto;">         
+          <img src="discipulado.png" alt="Logo Discipulado" style="height:120px; width:auto;">
         </div>
-        <h1>Digite o código de acesso</h1>
-        <p>Este portal exibe vídeos privados do Ministério Infantil da Igreja Presbiteriana Renovada de São Miguel Paulista.</p>
-        <div style="display:flex; gap:10px; align-items:center">
-          <input id="accessCode" class="input" type="password" placeholder="Código fornecido pelo administrador" />
+
+        <h1>Selecione o usuário e digite a senha</h1>
+        <p>Portal exclusivo do Ministério Infantil da IPRSM São Miguel Paulista.</p>
+
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <select id="userSelect" class="input">
+            <option value="">Selecione o usuário</option>
+          </select>
+          <input id="passwordInput" class="input" type="password" placeholder="Senha" />
           <button id="enterBtn" class="btn">Entrar</button>
         </div>
-        <p id="gateMsg" style="color:#f00; margin-top:10px; display:none">Código inválido.</p>
+
+        <p id="gateMsg" style="color:#f00; margin-top:10px; display:none">Usuário ou senha incorretos.</p>
         <div style="margin-top:14px" class="pill">🔒 O acesso é permitido apenas para usuários autorizados.</div>
       </div>
     </div>
 
+    <!-- Cabeçalho -->
     <header>
       <nav class="nav container">
-        <div class="logo" style="display:flex; align-items:center; gap:8px;">
-          <img src="logoiprsm.png" alt="Logo IPRSM" style="height:150px; width:auto;">
-          <img src="ipr_kids_icon.ico" alt="Logo IPRSM Kids" style="height:150px; width:auto;">
+        <div class="logo">
+          <img src="logoiprsm.png" alt="Logo IPRSM" style="height:120px; width:auto;">
+          <img src="ipr_kids_icon.ico" alt="Logo Kids" style="height:120px; width:auto;">
         </div>
-        <br><br>
         <div class="search">
-          <input id="q" class="input" placeholder="Pesquisar vídeos (Professores, Módulos)" />
+          <input id="q" class="input" placeholder="Pesquisar vídeos (Professores, Módulos, Tags)" />
           <select id="category"><option value="">Todos os módulos</option></select>
           <button id="clearBtn" class="btn-ghost">Limpar</button>
         </div>
+        <button id="reportBtn" class="btn" style="display:none;">📊 Relatório de Progresso</button>
       </nav>
     </header>
 
     <section class="hero container">
-  
-  <p class="sub">Capacitando líderes para servir no ministério infantil, guiando crianças no caminho de Jesus.</p>
-</section>
-
-<style>
-    .sub {
-    color: #274360; /* Fonte mais escura */
-    font-size: 1.2em;
-    text-shadow: 1px 1px 2px #aaa; /* leve 3D */
-  }
-</style>
-
+      <h1 class="headline">Discipulado IPRSM Kids</h1>
+      <p class="sub">Capacitando líderes para servir no ministério infantil, guiando crianças no caminho de Jesus.</p>
+    </section>
 
     <main class="container"><div id="grid" class="grid" role="list"></div></main>
 
-    <div id="modal" class="modal" aria-hidden="true" aria-label="player modal">
+    <div id="modal" class="modal" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-head">
           <strong id="nowTitle">Reprodução</strong>
@@ -202,56 +182,91 @@
   </div>
 
   <script>
-    const ACCESS_CODES = ["iprsmkids"];
-    const VIDEOS = [
-      { id: "1BFdv9B956q6JWcYDNqtnOUNXMv8H9x_-", title: "Introdução", category: "Módulo 1", tags: ["Dayane","Modulo 1","Introdução"], thumb: "https://i.imgur.com/IgnG636.png", pdf: "treinamento_iprsmkids/apostilas/vitoria.pdf" },
-      { id: "1X85MWlKH72T_SIrwt6NqFaq7ir_uphJT", title: "Qual é o Propósito do IPR Kids?", category: "Módulo 1", tags: ["Dayane","Modulo 1"], thumb: "https://i.imgur.com/8G3toEH.png", pdf: "treinamento_iprsmkids/apostilas/vitoria.pdf" },
-      { id: "1468jzahclFwmWMp7uiz-5brvmgF5GxnT", title: "Características Necessárias para o Voluntario!", category: "Módulo 1", tags: ["Dayane","modulo 1"], thumb: "https://i.imgur.com/f6jT6aQ.png", pdf: "treinamento_iprsmkids/apostilas/vitoria.pdf" },
-      { id: "1MuLioiHj5xEi3BX9vrT3o3m9ncMrbn9N", title: "Quais as Necessidades das Nossas Crianças?", category: "Módulo 2", tags: ["Vitoria","Modulo 2"], thumb: "https://i.imgur.com/KHD3tYz.png", pdf: "treinamento_iprsmkids/apostilas/vitoria.pdf" },
-      { id: "1FaCjrcRwp-Jvi9-rhMBTGTret44bbqW0", title: "Crianças Atípicas", category: "Módulo 2", tags: ["Vitoria","Modulo 2"], thumb: "https://i.imgur.com/JQkcN4q.png", pdf: "treinamento_iprsmkids/apostilas/vitoria.pdf" },
-      { id: "1LVw0lq5YhSpeu2Ava88DQnuTICaCz1jj", title: "Como funciona o Culto Kids?", category: "Módulo 3", tags: ["Juliana","Modulo 3"], thumb: "https://i.imgur.com/XbFTdK4.png", pdf: "treinamento_iprsmkids/apostilas/juliana.pdf" },
-      { id: "1FfdDeLttqP-mLz1si_fzKkhU3Exwy7_n", title: "Como funciona uma Aula?", category: "Módulo 3", tags: ["Juliana","Modulo 3"], thumb: "https://i.imgur.com/DKin6IS.png", pdf: "treinamento_iprsmkids/apostilas/juliana.pdf" },
-    ];
+const USERS = [
+  {name:"Dayane", password:"123", group:"professor"},
+  {name:"Vitória", password:"123", group:"professor"},
+  {name:"Juliana", password:"123", group:"professor"},
+  {name:"Nelson", password:"123", group:"Aluno"},
+  {name:"Carla", password:"123", group:"Aluno"}
+];
 
-    const CATEGORY_COLORS = { "Módulo 1":"rgba(56,189,248,.18)", "Módulo 2":"rgba(244,114,182,.18)", "Módulo 3":"rgba(163,230,53,.18)" };
+const VIDEOS = [
+  { id: "1BFdv9B956q6JWcYDNqtnOUNXMv8H9x_-", title: "Introdução", category: "Módulo 1", tags: ["Dayane","Modulo 1"], thumb: "https://i.imgur.com/IgnG636.png", pdf: "apostilas/vitoria.pdf" },
+  { id: "1X85MWlKH72T_SIrwt6NqFaq7ir_uphJT", title: "Propósito do IPR Kids", category: "Módulo 1", tags: ["Dayane","Modulo 1"], thumb: "https://i.imgur.com/8G3toEH.png", pdf: "apostilas/vitoria.pdf" },
+  { id: "1468jzahclFwmWMp7uiz-5brvmgF5GxnT", title: "Características Necessárias", category: "Módulo 1", tags: ["Dayane","Modulo 1"], thumb: "https://i.imgur.com/f6jT6aQ.png", pdf: "apostilas/vitoria.pdf" },
+  { id: "1MuLioiHj5xEi3BX9vrT3o3m9ncMrbn9N", title: "Necessidades das Crianças", category: "Módulo 2", tags: ["Vitoria","Modulo 2"], thumb: "https://i.imgur.com/KHD3tYz.png", pdf: "apostilas/vitoria.pdf" },
+  { id: "1FaCjrcRwp-Jvi9-rhMBTGTret44bbqW0", title: "Crianças Atípicas", category: "Módulo 2", tags: ["Vitoria","Modulo 2"], thumb: "https://i.imgur.com/JQkcN4q.png", pdf: "apostilas/vitoria.pdf" },
+  { id: "1LVw0lq5YhSpeu2Ava88DQnuTICaCz1jj", title: "Como funciona o Culto Kids?", category: "Módulo 3", tags: ["Juliana","Modulo 3"], thumb: "https://i.imgur.com/XbFTdK4.png", pdf: "apostilas/juliana.pdf" },
+  { id: "1FfdDeLttqP-mLz1si_fzKkhU3Exwy7_n", title: "Como funciona uma Aula?", category: "Módulo 3", tags: ["Juliana","Modulo 3"], thumb: "https://i.imgur.com/DKin6IS.png", pdf: "apostilas/juliana.pdf" },
+];
 
-    const gate = document.getElementById('gate'), gateMsg = document.getElementById('gateMsg');
-    document.getElementById('enterBtn').addEventListener('click',()=>{
-      const code=document.getElementById('accessCode').value.trim();
-      if(ACCESS_CODES.includes(code)){localStorage.setItem('portal_access','ok');gate.style.display='none';}
-      else gateMsg.style.display='block';
-    });
-    if(localStorage.getItem('portal_access')==='ok')gate.style.display='none';
+const CATEGORY_COLORS = { "Módulo 1":"rgba(56,189,248,.18)", "Módulo 2":"rgba(244,114,182,.18)", "Módulo 3":"rgba(163,230,53,.18)" };
 
-    const grid=document.getElementById('grid'), q=document.getElementById('q'), catSelect=document.getElementById('category'), clearBtn=document.getElementById('clearBtn');
-    const cats=[...new Set(VIDEOS.map(v=>v.category))].sort();
-    cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;catSelect.appendChild(o);});
-    function makeCard(v){
-      const card=document.createElement('article');card.className='card';card.role='listitem';
-      const img=document.createElement('img');img.className='thumb';img.src=v.thumb;img.alt=v.title;
-      const meta=document.createElement('div');meta.className='meta';
-      const title=document.createElement('h3');title.className='title';title.textContent=v.title;
-      const badge=document.createElement('span');badge.className='badge';badge.textContent=v.category;
-      const bg=CATEGORY_COLORS[v.category];if(bg){badge.style.background=bg;badge.style.borderColor='transparent';}
-      meta.append(title,badge);card.append(img,meta);card.addEventListener('click',()=>openPlayer(v));
-      return card;
-    }
-    function render(){
-      const term=q.value.toLowerCase(),cat=catSelect.value;
-      const filtered=VIDEOS.filter(v=>{const hay=(v.title+' '+(v.tags||[]).join(' ')).toLowerCase();return(!term||hay.includes(term))&&(!cat||v.category===cat);});
-      grid.replaceChildren(...filtered.map(makeCard));
-    }
-    q.addEventListener('input',render);catSelect.addEventListener('change',render);
-    clearBtn.addEventListener('click',()=>{q.value='';catSelect.value='';render();});
-    render();
+// LOGIN
+const gate = document.getElementById('gate');
+const gateMsg = document.getElementById('gateMsg');
+const userSelect = document.getElementById('userSelect');
+const passwordInput = document.getElementById('passwordInput');
+const enterBtn = document.getElementById('enterBtn');
+const reportBtn = document.getElementById('reportBtn');
 
-    const modal=document.getElementById('modal'), player=document.getElementById('player'), nowTitle=document.getElementById('nowTitle'), pdfBtn=document.getElementById('pdfBtn');
-    function openPlayer(v){modal.classList.add('open');nowTitle.textContent=v.title;player.src="https://drive.google.com/file/d/"+v.id+"/preview";if(v.pdf){pdfBtn.href=v.pdf;pdfBtn.style.display='flex';}else pdfBtn.style.display='none';}
-    document.getElementById('closeModal').addEventListener('click',()=>{modal.classList.remove('open');player.src='';});
-  
-   // 🔍 Toggle busca
-    document.getElementById('searchToggle').onclick=()=>document.getElementById('searchBox').classList.toggle('active');
+// Popular o select
+USERS.forEach(u => {
+  const opt = document.createElement('option');
+  opt.value = u.name;
+  opt.textContent = u.name + (u.group === "professor" ? " (Professor)" : " (Aluno)");
+  userSelect.appendChild(opt);
+});
 
-</script>
+// Login
+enterBtn.addEventListener('click', () => {
+  const userName = userSelect.value;
+  const password = passwordInput.value.trim();
+  const user = USERS.find(u => u.name === userName && u.password === password);
+
+  if (user) {
+    localStorage.setItem('portal_access', 'ok');
+    localStorage.setItem('user_group', user.group);
+    localStorage.setItem('user_name', user.name);
+    gate.style.display = 'none';
+    if (user.group === "professor") reportBtn.style.display = 'inline-flex';
+  } else {
+    gateMsg.style.display = 'block';
+  }
+});
+
+if (localStorage.getItem('portal_access') === 'ok') {
+  gate.style.display = 'none';
+  if (localStorage.getItem('user_group') === 'professor') reportBtn.style.display = 'inline-flex';
+}
+
+// Botão de relatório (simulação)
+reportBtn.addEventListener('click', () => {
+  alert("📊 Relatório de Progresso disponível apenas para Professores.\nEm breve: exportar dados e gerar PDF automático!");
+});
+
+// RENDERIZAÇÃO DE VÍDEOS
+const grid=document.getElementById('grid'), q=document.getElementById('q'), catSelect=document.getElementById('category'), clearBtn=document.getElementById('clearBtn');
+const cats=[...new Set(VIDEOS.map(v=>v.category))].sort();
+cats.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;catSelect.appendChild(o);});
+function makeCard(v){
+  const card=document.createElement('article');card.className='card';card.role='listitem';
+  const img=document.createElement('img');img.className='thumb';img.src=v.thumb;img.alt=v.title;
+  const meta=document.createElement('div');meta.className='meta';
+  const title=document.createElement('h3');title.className='title';title.textContent=v.title;
+  const badge=document.createElement('span');badge.className='badge';badge.textContent=v.category;
+  const bg=CATEGORY_COLORS[v.category];if(bg){badge.style.background=bg;}
+  meta.append(title,badge);card.append(img,meta);card.addEventListener('click',()=>openModal(v));return card;
+}
+function render(list){grid.innerHTML='';if(!list.length){grid.innerHTML='<p>Nenhum vídeo encontrado.</p>';return;}list.forEach(v=>grid.append(makeCard(v)));}
+function applyFilters(){const term=q.value.toLowerCase();const cat=catSelect.value;const filtered=VIDEOS.filter(v=>(!cat||v.category===cat)&&(!term||v.title.toLowerCase().includes(term)||v.tags.some(t=>t.toLowerCase().includes(term))));render(filtered);}
+q.addEventListener('input',applyFilters);catSelect.addEventListener('change',applyFilters);clearBtn.addEventListener('click',()=>{q.value='';catSelect.value='';render(VIDEOS);});
+render(VIDEOS);
+
+// MODAL PLAYER
+const modal=document.getElementById('modal'), player=document.getElementById('player'), closeModal=document.getElementById('closeModal'), nowTitle=document.getElementById('nowTitle'), pdfBtn=document.getElementById('pdfBtn');
+function openModal(v){nowTitle.textContent=v.title;player.src=`https://drive.google.com/file/d/${v.id}/preview`;if(v.pdf){pdfBtn.href=v.pdf;pdfBtn.style.display='flex';}else pdfBtn.style.display='none';modal.classList.add('open');}
+closeModal.addEventListener('click',()=>{modal.classList.remove('open');player.src='';});
+  </script>
 </body>
 </html>
