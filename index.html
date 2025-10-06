@@ -163,7 +163,7 @@ const CATEGORY_COLORS = { "Módulo 1":"rgba(56,189,248,.18)", "Módulo 2":"rgba(
 const gate=document.getElementById('gate'), gateMsg=document.getElementById('gateMsg'), userSelect=document.getElementById('userSelect'), passwordInput=document.getElementById('passwordInput'), enterBtn=document.getElementById('enterBtn'), reportBtn=document.getElementById('reportBtn');
 
 // Popula usuários
-USERS.forEach(u=>{const o=document.createElement('option');o.value=u.name;o.textContent=u.name+(u.group==="professor"?" (Professor)":" (Aluno)");userSelect.appendChild(o);});
+USERS.forEach(u=>{const o=document.createElement('option');o.value=u.name;o.textContent=u.name+(u.group==="Professor(a)"?" (Professor(a))":" (Aluno)");userSelect.appendChild(o);});
 
 // Função de modal
 const modal=document.getElementById('modal'), player=document.getElementById('player'), closeModal=document.getElementById('closeModal'), nowTitle=document.getElementById('nowTitle'), pdfBtn=document.getElementById('pdfBtn');
