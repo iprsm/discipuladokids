@@ -127,7 +127,7 @@
           <button id="closeModal" class="btn">Fechar</button>
         </div>
         <div style="position:relative">
-          <iframe id="player" class="player" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+          <iframe id="player" class="player" allow="; fullscreen; picture-in-picture"></iframe>
           <a id="pdfBtn" class="pdf-fab" target="_blank" style="display:none">📄</a>
         </div>
       </div>
@@ -167,7 +167,7 @@ USERS.forEach(u=>{const o=document.createElement('option');o.value=u.name;o.text
 
 // Função de modal
 const modal=document.getElementById('modal'), player=document.getElementById('player'), closeModal=document.getElementById('closeModal'), nowTitle=document.getElementById('nowTitle'), pdfBtn=document.getElementById('pdfBtn');
-function openModal(v){nowTitle.textContent=v.title;player.src=`https://drive.google.com/file/d/${v.id}/preview?autoplay=1`;pdfBtn.href=v.pdf||"#";pdfBtn.style.display=v.pdf?"flex":"none";modal.classList.add('open');}
+function openModal(v){nowTitle.textContent=v.title;player.src=`https://drive.google.com/file/d/${v.id}/preview?=1`;pdfBtn.href=v.pdf||"#";pdfBtn.style.display=v.pdf?"flex":"none";modal.classList.add('open');}
 closeModal.addEventListener('click',()=>{modal.classList.remove('open');player.src='';});
 
 // Função vídeo de introdução
